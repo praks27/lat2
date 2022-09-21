@@ -17,7 +17,7 @@ class AnggotaController extends Controller
     {
         //
         $data = anggota::get();
-        return view('pages.list', ['data' => $data]);
+        return view('pages.student.list', ['data' => $data]);
     }
 
     /**
@@ -29,7 +29,7 @@ class AnggotaController extends Controller
     {
         //
         $student = new anggota();
-        return view('pages.form',['student' => $student]);
+        return view('pages.student.form',['student' => $student]);
     }
 
     /**
@@ -68,7 +68,7 @@ class AnggotaController extends Controller
     public function edit(anggota $student)
     {
         //
-        return view('pages.form',['student'=>$student]);
+        return view('pages.student.form',['student'=>$student]);
     }
 
     /**
