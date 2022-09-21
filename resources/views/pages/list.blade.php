@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 @section('content')
 
-<a href="anggota/create" class="btn btn-success mb-2">Tambah Data</a>
+<a href="student/create" class="btn btn-success mb-2">Tambah Data</a>
 {{-- untuk menghide dan memunculkan alert --}}
 @if ( $message = Session::get('notif'))
     <div class="alert alert-success" role="alert">
@@ -34,6 +34,12 @@
         <td>{{ $list->major }}</td>
         <td>
             <a href="{{route('student.edit',['student'=>$list->id]) }}" class="btn btn-warning">Edit</a>
+            {{-- untuk hapus data di table --}}
+            <form action="{{route('student.destroy',['student'=>$list->id])}}" class="d-inline" method="POST">
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn btn-success">Delete</button>
+            </form>
         </td>
       </tr>
     @endforeach

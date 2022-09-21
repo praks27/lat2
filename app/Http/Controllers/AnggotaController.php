@@ -94,8 +94,10 @@ class AnggotaController extends Controller
      * @param  \App\Models\anggota  $anggota
      * @return \Illuminate\Http\Response
      */
-    public function destroy(anggota $anggota)
+    public function destroy(anggota $student)
     {
         //
+        $student->delete();
+        return redirect('student')->with('notif','berhasil hapus data');
     }
 }
