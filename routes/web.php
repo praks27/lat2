@@ -34,4 +34,4 @@ route::get('/',[homeCtrl::class,'home'])->name('home');
 // //untuk delete
 // route::delete('/anggota/{id}',[AnggotaController::class,'index']);
 
-route::resource('anggota',AnggotaController::class);
+route::resource('student',AnggotaController::class);

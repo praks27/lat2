@@ -2,7 +2,14 @@
 @section('content')
 
 <a href="anggota/create" class="btn btn-success mb-2">Tambah Data</a>
-<table class="table">
+{{-- untuk menghide dan memunculkan alert --}}
+@if ( $message = Session::get('notif'))
+    <div class="alert alert-success" role="alert">
+        {{$message}}
+    </div>
+@endif
+
+<table class="table table-striped table-bordered">
     <thead class="table-dark">
       <tr>
         <th scope="col">#</th>
@@ -11,6 +18,7 @@
         <th scope="col">Gender</th>
         <th scope="col">Address</th>
         <th scope="col">Major</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +32,9 @@
         <td>{{ $list->gender }}</td>
         <td>{{ $list->address }}</td>
         <td>{{ $list->major }}</td>
+        <td>
+            <a href="{{route('student.edit',['student'=>$list->id]) }}" class="btn btn-warning">Edit</a>
+        </td>
       </tr>
     @endforeach
     </tbody>

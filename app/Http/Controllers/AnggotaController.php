@@ -28,7 +28,8 @@ class AnggotaController extends Controller
     public function create()
     {
         //
-        return view('pages.form');
+        $student = new anggota();
+        return view('pages.form',['student' => $student]);
     }
 
     /**
@@ -44,7 +45,7 @@ class AnggotaController extends Controller
         //
         $data = $request->all();
         anggota::create($data);
-        return redirect('anggota');
+        return redirect('student')->with('notif','berhasil menambah data');
     }
 
     /**
@@ -64,9 +65,10 @@ class AnggotaController extends Controller
      * @param  \App\Models\anggota  $anggota
      * @return \Illuminate\Http\Response
      */
-    public function edit(anggota $anggota)
+    public function edit(anggota $student)
     {
         //
+        return view('pages.form',['student'=>$student]);
     }
 
     /**
@@ -76,9 +78,14 @@ class AnggotaController extends Controller
      * @param  \App\Models\anggota  $anggota
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateanggotaRequest $request, anggota $anggota)
+    public function update(UpdateanggotaRequest $request, anggota $student)
     {
         //
+        $data = $request->all();
+        $student -> update($data);
+        //untuk memanggil fungsi notif session tambahkan panah setelah kurung,lalu ketikan with
+        //untuk parameter pertama berdasarkan nama dari variabel session dan parameter kedua berisikan pesan yang akan di tampilkan
+        return redirect('student')->with('notif','berhasil update data');
     }
 
     /**
