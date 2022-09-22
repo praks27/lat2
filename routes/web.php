@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\homeCtrl;
+use App\Http\Controllers\MajorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,3 +36,4 @@ route::get('/',[homeCtrl::class,'home'])->name('home');
 // route::delete('/anggota/{id}',[AnggotaController::class,'index']);
 
 route::resource('student',AnggotaController::class);
+route::resource('major',MajorController::class);

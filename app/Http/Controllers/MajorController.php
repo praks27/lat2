@@ -16,6 +16,8 @@ class MajorController extends Controller
     public function index()
     {
         //
+        $data = major::get();
+        return view('pages.major.list',['data' => $data]);
     }
 
     /**
@@ -26,6 +28,8 @@ class MajorController extends Controller
     public function create()
     {
         //
+        $major = new major();
+        return view('pages.major.form',['major' => $major]);
     }
 
     /**
@@ -37,6 +41,9 @@ class MajorController extends Controller
     public function store(StoremajorRequest $request)
     {
         //
+        $data = $request->all();
+        major::create($data);
+        return redirect('major')->with('notif','berhasil menambahkan data');
     }
 
     /**

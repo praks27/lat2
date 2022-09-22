@@ -42,7 +42,7 @@ class AnggotaController extends Controller
     {
         //untuk debug view data yang akan di masukkan ke data base
         // dd($request->all());
-        //
+        // store untuk menyimpan data
         $data = $request->all();
         anggota::create($data);
         return redirect('student')->with('notif','berhasil menambah data');
