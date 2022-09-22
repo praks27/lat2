@@ -9,7 +9,6 @@
     <form action="{{ route('major.store')}}" method="post">
 @endif
     @csrf
-
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="enter your name here" value="{{ $major->name }}">
@@ -17,9 +16,10 @@
         @error('name') <div class="text-muted">{{$message}}</div> @enderror
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea name="description" class="form-control" id="description" cols="10" rows="5"></textarea>
+            <textarea name="description" class="form-control" id="description" cols="10" rows="5">{{ $major->description }}</textarea>
         </div>
         @error('description') <div class="text-muted">{{$message}}</div> @enderror
         <button type="submit" class="btn btn-outline-success">Submit</button>
     </div>
-
+</form>
+@endsection

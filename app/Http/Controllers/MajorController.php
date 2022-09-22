@@ -65,7 +65,8 @@ class MajorController extends Controller
      */
     public function edit(major $major)
     {
-        //
+        //untuk menampilkan kembali form input dengan berisikan data dari database
+        return view('pages.major.form',['major'=>$major]);
     }
 
     /**
@@ -78,6 +79,11 @@ class MajorController extends Controller
     public function update(UpdatemajorRequest $request, major $major)
     {
         //
+        $data = $request->all();
+        $major -> update($data);
+        //untuk memanggil fungsi notif session tambahkan panah setelah kurung,lalu ketikan with
+        //untuk parameter pertama berdasarkan nama dari variabel session dan parameter kedua berisikan pesan yang akan di tampilkan
+        return redirect('major')->with('notif','berhasil update data');
     }
 
     /**
@@ -89,5 +95,7 @@ class MajorController extends Controller
     public function destroy(major $major)
     {
         //
+        $major->delete();
+        return redirect('major')->with('notif','berhasil delete data');
     }
 }

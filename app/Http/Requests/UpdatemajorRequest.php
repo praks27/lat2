@@ -25,7 +25,8 @@ class UpdatemajorRequest extends FormRequest
     {
         return [
             //
-
+            "name"=>"required|max:75",
+            "description"=>"required"
         ];
     }
 }

@@ -27,9 +27,9 @@
             <td>{{ $list->name }}</td>
             <td>{{ $list->description }}</td>
             <td>
-                <a href="{{route('student.edit',['student'=>$list->id]) }}" class="btn btn-warning">Edit</a>
+                <a href="{{route('major.edit',['major'=>$list->id]) }}" class="btn btn-warning">Edit</a>
                 {{-- untuk hapus data di table --}}
-                <form action="{{route('student.destroy',['student'=>$list->id])}}" class="d-inline" method="POST">
+                <form action="{{route('major.destroy',['major'=>$list->id])}}" class="d-inline" method="POST">
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-success">Delete</button>
