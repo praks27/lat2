@@ -27,6 +27,7 @@
             <td>{{ $list->name }}</td>
             <td>{{ $list->description }}</td>
             <td>
+                <a href="{{route('major.show',['major'=>$list->id]) }}" class="btn btn-warning">Student</a>
                 <a href="{{route('major.edit',['major'=>$list->id]) }}" class="btn btn-warning">Edit</a>
                 {{-- untuk hapus data di table --}}
                 <form action="{{route('major.destroy',['major'=>$list->id])}}" class="d-inline" method="POST">
@@ -37,6 +38,6 @@
             </td>
           </tr>
         @endforeach
-        </tbody>
+    </tbody>
 </table>
 @endsection

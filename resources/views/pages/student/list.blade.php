@@ -31,7 +31,8 @@
         <td>{{ $list->date_birth }}</td>
         <td>{{ $list->gender }}</td>
         <td>{{ $list->address }}</td>
-        <td>{{ $list->major }}</td>
+        {{-- ditambahkan name karna untuk memanggil name dari table major yang sebabnya sudah ada belongsto --}}
+        <td>{{ $list->major->name }}</td>
         <td>
             <a href="{{route('student.edit',['student'=>$list->id]) }}" class="btn btn-warning">Edit</a>
             {{-- untuk hapus data di table --}}

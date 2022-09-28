@@ -15,7 +15,7 @@ class MajorController extends Controller
      */
     public function index()
     {
-        //
+        //untuk menampilkan seleuruh data yang ada di database sesuai table nya
         $data = major::get();
         return view('pages.major.list',['data' => $data]);
     }
@@ -27,7 +27,7 @@ class MajorController extends Controller
      */
     public function create()
     {
-        //
+        //untuk insert ke database
         $major = new major();
         return view('pages.major.form',['major' => $major]);
     }
@@ -40,7 +40,7 @@ class MajorController extends Controller
      */
     public function store(StoremajorRequest $request)
     {
-        //
+        //untuk menampung data lalu dikirim ke database
         $data = $request->all();
         major::create($data);
         return redirect('major')->with('notif','berhasil menambahkan data');
@@ -55,6 +55,8 @@ class MajorController extends Controller
     public function show(major $major)
     {
         //
+        $data = $major->load(['students']);
+        return view('pages.major.list-student',compact('data'));
     }
 
     /**
@@ -78,8 +80,9 @@ class MajorController extends Controller
      */
     public function update(UpdatemajorRequest $request, major $major)
     {
-        //
+        //untuk menampilkan value dari databse
         $data = $request->all();
+        //untuk menyimpan data setelah update
         $major -> update($data);
         //untuk memanggil fungsi notif session tambahkan panah setelah kurung,lalu ketikan with
         //untuk parameter pertama berdasarkan nama dari variabel session dan parameter kedua berisikan pesan yang akan di tampilkan
@@ -94,7 +97,7 @@ class MajorController extends Controller
      */
     public function destroy(major $major)
     {
-        //
+        //method delete di gunakan untuk menghapus data
         $major->delete();
         return redirect('major')->with('notif','berhasil delete data');
     }

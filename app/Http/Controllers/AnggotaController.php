@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\anggota;
 use App\Http\Requests\StoreanggotaRequest;
 use App\Http\Requests\UpdateanggotaRequest;
+use App\Models\Major;
 
 class AnggotaController extends Controller
 {
@@ -15,8 +16,8 @@ class AnggotaController extends Controller
      */
     public function index()
     {
-        //
-        $data = anggota::get();
+        //ditambahkan with sebelum get untuk memanggil public function major di anggota.php
+        $data = anggota::with(['major'])->get();
         return view('pages.student.list', ['data' => $data]);
     }
 
@@ -27,9 +28,10 @@ class AnggotaController extends Controller
      */
     public function create()
     {
-        //
+        //ditambahkan major untuk memanggil relasi major
         $student = new anggota();
-        return view('pages.student.form',['student' => $student]);
+        $majors = Major::get();
+        return view('pages.student.form',['student' => $student,'majors' => $majors]);
     }
 
     /**
@@ -67,8 +69,10 @@ class AnggotaController extends Controller
      */
     public function edit(anggota $student)
     {
-        //
-        return view('pages.student.form',['student'=>$student]);
+        //ditambahkan major untuk memanggil relasi major
+        $majors = Major::get();
+        return view('pages.student.form',
+        ['student'=>$student,'majors'=>$majors]);
     }
 
     /**

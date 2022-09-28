@@ -34,11 +34,11 @@
     @error('address') <div class="text-muted">{{$message}}</div> @enderror
     <div class="mb-3">
       <label for="major" class="form-label">Major</label>
-        <select name="major" class="form-control" id="major">
+        <select name="major_id" class="form-control" id="major">
             <option selected disabled>--choose your major--</option>
-            <option value="Informatics Computer" {{ $student->major == 'Informatics Computer' ? 'selected' : '' }}>Infomatics Computer</option>
-            <option value="System Information" {{ $student->major == 'System Information' ? 'selected' : '' }}>System Information</option>
-            <option value="Management Bussiness" {{ $student->major == 'Bussiness Management' ? 'selected' : '' }}>Management Bussiness</option>
+            @foreach ($majors as $major)
+                <option value="{{ $major->id }}">{{ $major->name }}</option>
+            @endforeach
         </select>
     </div>
     @error('major') <div class="text-muted">{{$message}}</div> @enderror
